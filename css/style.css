@@ -346,22 +346,6 @@ main {
 
 
 /* ================================
-   Planning
-   ================================ */
-
-/*
-  Pour l’instant le planning est une image.
-  Elle prend toute la largeur disponible sans dépasser 1250px.
-*/
-.planning-image {
-  display: block;
-  width: 100%;
-  max-width: 1250px;
-  height: auto;
-  margin: 0 auto;
-}
-
-/* ================================
    Planning vertical
    ================================ */
 
@@ -395,14 +379,18 @@ main {
   font-size: 1rem;
 }
 
+/*
+  Conteneur scrollable du planning.
+  gap réduit l’espace vertical entre les éléments.
+*/
 .schedule-timeline {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 10px;
   max-height: 720px;
   overflow-y: auto;
-  padding: 6px 10px 8px 28px;
+  padding: 0 10px 8px 28px;
   scroll-behavior: smooth;
 }
 
@@ -418,7 +406,12 @@ main {
   background: rgba(75, 22, 8, 0.22);
 }
 
-/* Séparateur de jour */
+/*
+  Séparateur de jour.
+  L’espace au-dessus a été supprimé ici :
+  margin: 0;
+  padding réduit.
+*/
 .day-separator {
   position: sticky;
   top: 0;
@@ -426,8 +419,8 @@ main {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin: 8px 0 4px;
-  padding: 10px 0;
+  margin: 0;
+  padding: 4px 0 8px;
   background: linear-gradient(
     180deg,
     rgba(235, 233, 221, 1) 0%,
@@ -446,7 +439,7 @@ main {
 }
 
 .day-separator span {
-  padding: 10px 28px;
+  padding: 8px 26px;
   border-radius: 999px;
   background: var(--brown);
   color: white;
@@ -526,48 +519,23 @@ main {
   line-height: 1.35;
 }
 
-/* Responsive mobile du planning */
-@media (max-width: 700px) {
-  .schedule-board {
-    padding: 22px 8px 30px;
-    border-radius: 20px;
-  }
 
-  .schedule-timeline {
-    max-height: 680px;
-    padding-left: 8px;
-  }
+/* ================================
+   Ancienne image planning
+   ================================ */
 
-  .schedule-timeline::before {
-    left: 64px;
-  }
-
-  .schedule-item {
-    grid-template-columns: 74px 1fr;
-    gap: 12px;
-  }
-
-  .schedule-time {
-    height: 42px;
-    font-size: 0.95rem;
-  }
-
-  .schedule-time::after {
-    right: -22px;
-    width: 14px;
-    height: 14px;
-    border-width: 3px;
-  }
-
-  .schedule-content {
-    padding: 14px 16px;
-    border-radius: 18px;
-  }
-
-  .day-separator span {
-    padding: 8px 18px;
-  }
+/*
+  Tu peux garder cette règle si un jour tu veux remettre un planning sous forme d’image.
+  Elle ne gêne pas le planning vertical.
+*/
+.planning-image {
+  display: block;
+  width: 100%;
+  max-width: 1250px;
+  height: auto;
+  margin: 0 auto;
 }
+
 
 /* ================================
    Footer
@@ -672,6 +640,55 @@ main {
 /* ================================
    Responsive mobile
    ================================ */
+
+@media (max-width: 700px) {
+  /*
+    Responsive du planning vertical.
+  */
+  .schedule-board {
+    padding: 22px 8px 30px;
+    border-radius: 20px;
+  }
+
+  .schedule-timeline {
+    max-height: 680px;
+    padding-left: 8px;
+  }
+
+  .schedule-timeline::before {
+    left: 64px;
+  }
+
+  .schedule-item {
+    grid-template-columns: 74px 1fr;
+    gap: 12px;
+  }
+
+  .schedule-time {
+    height: 42px;
+    font-size: 0.95rem;
+  }
+
+  .schedule-time::after {
+    right: -22px;
+    width: 14px;
+    height: 14px;
+    border-width: 3px;
+  }
+
+  .schedule-content {
+    padding: 14px 16px;
+    border-radius: 18px;
+  }
+
+  .day-separator {
+    padding: 2px 0 6px;
+  }
+
+  .day-separator span {
+    padding: 8px 18px;
+  }
+}
 
 @media (max-width: 600px) {
   body {
