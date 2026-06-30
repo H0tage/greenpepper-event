@@ -3,33 +3,20 @@
 <head>
   <meta charset="utf-8">
 
-  <!-- Titre affiché dans l’onglet du navigateur -->
   <title>Greenpepper au Charystream</title>
 
-  <!-- Permet un affichage correct sur mobile -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Fichier CSS externe : toute l’apparence du site est dedans -->
   <link rel="stylesheet" href="css/style.css">
-
-  <!-- Fichier JavaScript externe : gère le changement d’onglet -->
   <script src="js/app.js" defer></script>
 </head>
 
 <body>
   <main>
-    <!-- Titre principal de la page -->
     <header class="page-title">
       <h1>Greenpepper au Charystream</h1>
     </header>
 
-    <!-- Barre d’onglets -->
-    <!--
-      Chaque bouton possède un data-target.
-      Ce data-target correspond à l’id de la section à afficher.
-      Exemple :
-      data-target="donation-goals" affiche <section id="donation-goals">
-    -->
     <nav class="tabs" aria-label="Sélection du contenu">
       <button class="tab active" type="button" data-target="donation-goals">
         Donation goals
@@ -38,20 +25,15 @@
       <button class="tab" type="button" data-target="planning">
         Planning
       </button>
+
+      <button class="tab" type="button" data-target="puzzle-communautaire">
+        Puzzle Communautaire
+      </button>
     </nav>
 
-    <!-- Section Donation goals -->
-    <!--
-      Elle est affichée par défaut grâce à la classe "active".
-      Le JavaScript enlève/ajoute cette classe selon l’onglet sélectionné.
-    -->
     <section id="donation-goals" class="content active">
       <div class="goals-board">
-
-        <!-- En-tête du tableau des donation goals -->
         <div class="goals-header">
-
-          <!-- Icône rose à gauche, dessinée en SVG directement dans le HTML -->
           <div class="goal-icon" aria-hidden="true">
             <svg viewBox="0 0 64 64">
               <path d="M18 34h9l8 8h9c5 0 8 3 8 7v1H28l-13-7H8v-9h10z"></path>
@@ -59,31 +41,18 @@
             </svg>
           </div>
 
-          <!-- Titre Donation goals + sous-titre GreenPepperCH -->
           <div class="goal-title-block">
             <h2 class="goal-title">Donation goals</h2>
             <div class="goal-subtitle">GreenPepperCH</div>
             <div class="header-line"></div>
           </div>
 
-          <!-- Zone droite : badge CharyStream + portrait -->
           <div class="streamer-area">
             <div class="charystream-badge">CharyStream<br>2026</div>
-
-            <!--
-              Image du streamer.
-              Le fichier doit exister ici :
-              assets/greenpepper.webp
-            -->
             <img class="streamer-photo" src="assets/greenpepper.webp" alt="Greenpepper">
           </div>
         </div>
 
-        <!-- Liste complète des donation goals -->
-        <!--
-          Chaque ligne est un <li>.
-          La classe orange ou pink détermine la couleur de la barre.
-        -->
         <ul class="goals-list">
           <li class="goal-row orange">
             <span class="amount">25€</span>
@@ -178,148 +147,154 @@
       </div>
     </section>
 
-    <!-- Section Planning -->
-    <!--
-      Pour l’instant, elle affiche une image.
-      Le fichier attendu est :
-      planning/planning.png
-    -->
-<section id="planning" class="content">
-  <div class="schedule-board">
-    <header class="schedule-header">
-      <h2>Planning du week-end</h2>
-      <p>Programme provisoire — horaires et activités à confirmer.</p>
-    </header>
+    <section id="planning" class="content">
+      <div class="schedule-board">
+        <header class="schedule-header">
+          <h2>Planning du week-end</h2>
+          <p>Programme provisoire — horaires et activités à confirmer.</p>
+        </header>
 
-    <div class="schedule-timeline" aria-label="Planning vertical du Charystream">
-      <div class="day-separator">
-        <span>Vendredi</span>
+        <div class="schedule-timeline" aria-label="Planning vertical du Charystream">
+          <div class="day-separator">
+            <span>Vendredi</span>
+          </div>
+
+          <article class="schedule-item orange">
+            <div class="schedule-time">18:00</div>
+            <div class="schedule-content">
+              <h3>Ouverture du live</h3>
+              <p>Lancement du stream, présentation du week-end et des donation goals.</p>
+            </div>
+          </article>
+
+          <article class="schedule-item pink">
+            <div class="schedule-time">19:30</div>
+            <div class="schedule-content">
+              <h3>Session détente</h3>
+              <p>Discussion avec le chat, échauffement et premiers objectifs.</p>
+            </div>
+          </article>
+
+          <article class="schedule-item orange">
+            <div class="schedule-time">21:00</div>
+            <div class="schedule-content">
+              <h3>Jeu mystère</h3>
+              <p>Premier gros bloc de la soirée, activité à confirmer.</p>
+            </div>
+          </article>
+
+          <article class="schedule-item pink">
+            <div class="schedule-time">23:30</div>
+            <div class="schedule-content">
+              <h3>Late show Greenpepper</h3>
+              <p>Moment chill de fin de soirée, discussions et surprises éventuelles.</p>
+            </div>
+          </article>
+
+          <div class="day-separator">
+            <span>Samedi</span>
+          </div>
+
+          <article class="schedule-item orange">
+            <div class="schedule-time">10:00</div>
+            <div class="schedule-content">
+              <h3>Reprise du live</h3>
+              <p>Café, bilan de la veille et programme de la journée.</p>
+            </div>
+          </article>
+
+          <article class="schedule-item pink">
+            <div class="schedule-time">11:30</div>
+            <div class="schedule-content">
+              <h3>Défi communautaire</h3>
+              <p>Activité avec le chat, votes, interactions et objectifs bonus.</p>
+            </div>
+          </article>
+
+          <article class="schedule-item orange">
+            <div class="schedule-time">14:00</div>
+            <div class="schedule-content">
+              <h3>Bloc principal</h3>
+              <p>Grosse activité de l’après-midi, probablement le cœur du samedi.</p>
+            </div>
+          </article>
+
+          <article class="schedule-item pink">
+            <div class="schedule-time">17:30</div>
+            <div class="schedule-content">
+              <h3>Pause / interlude</h3>
+              <p>Moment plus calme, point sur les dons et les paliers débloqués.</p>
+            </div>
+          </article>
+
+          <article class="schedule-item orange">
+            <div class="schedule-time">20:30</div>
+            <div class="schedule-content">
+              <h3>Prime time</h3>
+              <p>Activité majeure du samedi soir, invités ou concept spécial.</p>
+            </div>
+          </article>
+
+          <article class="schedule-item pink">
+            <div class="schedule-time">23:00</div>
+            <div class="schedule-content">
+              <h3>After du samedi</h3>
+              <p>Fin de soirée libre, objectifs débloqués et imprévus contrôlés.</p>
+            </div>
+          </article>
+
+          <div class="day-separator">
+            <span>Dimanche</span>
+          </div>
+
+          <article class="schedule-item orange">
+            <div class="schedule-time">10:30</div>
+            <div class="schedule-content">
+              <h3>Dernière journée</h3>
+              <p>Reprise tranquille, résumé du week-end et derniers objectifs.</p>
+            </div>
+          </article>
+
+          <article class="schedule-item pink">
+            <div class="schedule-time">13:00</div>
+            <div class="schedule-content">
+              <h3>Activité communautaire</h3>
+              <p>Moment participatif avec le chat, défis et interactions.</p>
+            </div>
+          </article>
+
+          <article class="schedule-item orange">
+            <div class="schedule-time">16:00</div>
+            <div class="schedule-content">
+              <h3>Dernière ligne droite</h3>
+              <p>Rush final des donation goals et derniers paliers à débloquer.</p>
+            </div>
+          </article>
+
+          <article class="schedule-item pink">
+            <div class="schedule-time">18:00</div>
+            <div class="schedule-content">
+              <h3>Clôture</h3>
+              <p>Remerciements, total récolté, bilan et fin de l’événement.</p>
+            </div>
+          </article>
+        </div>
       </div>
+    </section>
 
-      <article class="schedule-item orange">
-        <div class="schedule-time">18:00</div>
-        <div class="schedule-content">
-          <h3>Ouverture du live</h3>
-          <p>Lancement du stream, présentation du week-end et des donation goals.</p>
+    <section id="puzzle-communautaire" class="content">
+      <div class="puzzle-board">
+        <header class="puzzle-header">
+          <h2>Puzzle Communautaire</h2>
+          <p>Les informations détaillées seront ajoutées ici prochainement.</p>
+        </header>
+
+        <div class="puzzle-placeholder">
+          <p>Contenu à venir.</p>
         </div>
-      </article>
-
-      <article class="schedule-item pink">
-        <div class="schedule-time">19:30</div>
-        <div class="schedule-content">
-          <h3>Session détente</h3>
-          <p>Discussion avec le chat, échauffement et premiers objectifs.</p>
-        </div>
-      </article>
-
-      <article class="schedule-item orange">
-        <div class="schedule-time">21:00</div>
-        <div class="schedule-content">
-          <h3>Jeu mystère</h3>
-          <p>Premier gros bloc de la soirée, activité à confirmer.</p>
-        </div>
-      </article>
-
-      <article class="schedule-item pink">
-        <div class="schedule-time">23:30</div>
-        <div class="schedule-content">
-          <h3>Late show</h3>
-          <p>Moment chill de fin de soirée, discussions et surprises éventuelles.</p>
-        </div>
-      </article>
-
-      <div class="day-separator">
-        <span>Samedi</span>
       </div>
+    </section>
 
-      <article class="schedule-item orange">
-        <div class="schedule-time">10:00</div>
-        <div class="schedule-content">
-          <h3>Reprise du live</h3>
-          <p>Café, bilan de la veille et programme de la journée.</p>
-        </div>
-      </article>
-
-      <article class="schedule-item pink">
-        <div class="schedule-time">11:30</div>
-        <div class="schedule-content">
-          <h3>Défi communautaire</h3>
-          <p>Activité avec le chat, votes, interactions et objectifs bonus.</p>
-        </div>
-      </article>
-
-      <article class="schedule-item orange">
-        <div class="schedule-time">14:00</div>
-        <div class="schedule-content">
-          <h3>Bloc principal</h3>
-          <p>Grosse activité de l’après-midi.</p>
-        </div>
-      </article>
-
-      <article class="schedule-item pink">
-        <div class="schedule-time">17:30</div>
-        <div class="schedule-content">
-          <h3>Pause / interlude</h3>
-          <p>Chill, point sur les dons et les paliers débloqués.</p>
-        </div>
-      </article>
-
-      <article class="schedule-item orange">
-        <div class="schedule-time">20:30</div>
-        <div class="schedule-content">
-          <h3>Prime time</h3>
-          <p>On donne tout</p>
-        </div>
-      </article>
-
-      <article class="schedule-item pink">
-        <div class="schedule-time">23:00</div>
-        <div class="schedule-content">
-          <h3>After du samedi</h3>
-          <p>Fin de soirée libre, objectifs débloqués et imprévus.</p>
-        </div>
-      </article>
-
-      <div class="day-separator">
-        <span>Dimanche</span>
-      </div>
-
-      <article class="schedule-item orange">
-        <div class="schedule-time">10:30</div>
-        <div class="schedule-content">
-          <h3>Dernière journée</h3>
-          <p>Reprise tranquille, résumé du week-end et derniers objectifs.</p>
-        </div>
-      </article>
-
-      <article class="schedule-item pink">
-        <div class="schedule-time">13:00</div>
-        <div class="schedule-content">
-          <h3>Activité communautaire</h3>
-          <p>Moment participatif avec le chat.</p>
-        </div>
-      </article>
-
-      <article class="schedule-item orange">
-        <div class="schedule-time">16:00</div>
-        <div class="schedule-content">
-          <h3>Dernière ligne droite</h3>
-          <p>Rush final des donation goals et derniers paliers à débloquer.</p>
-        </div>
-      </article>
-
-      <article class="schedule-item pink">
-        <div class="schedule-time">18:00</div>
-        <div class="schedule-content">
-          <h3>Clôture</h3>
-          <p>Remerciements, total récolté, bilan et fin de l’événement.</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-    <!-- Footer discret -->
     <footer class="site-footer">
       made with love by H0tage <span>(grinefrerot)</span>
     </footer>
