@@ -1245,3 +1245,24 @@ main {
     width: 100%;
   }
 }
+
+/* ================================
+   Charystream — respiration des blocs
+   ================================ */
+
+.charystream-content {
+  gap: 34px;
+}
+
+.charystream-hero-card {
+  margin-bottom: 12px;
+}
+
+.charystream-stat-grid {
+  gap: 24px;
+  margin: 16px 0 14px;
+}
+
+.charystream-card {
+  margin-top: 6px;
+}
