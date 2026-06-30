@@ -69,9 +69,9 @@ main {
 
 .tabs {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto 30px;
   padding: 8px;
   background: var(--tab-bg);
@@ -796,11 +796,11 @@ main {
     padding: 6px;
   }
 
-  .tab {
-    border-radius: 16px;
-    padding: 12px 6px;
-    font-size: 0.78rem;
-  }
+.tab {
+  border-radius: 16px;
+  padding: 11px 5px;
+  font-size: 0.68rem;
+}
 
   .goals-board {
     padding: 22px 6px 34px;
@@ -1066,5 +1066,147 @@ main {
 
   .puzzle-screen-small {
     max-width: 240px;
+  }
+}
+
+/* ================================
+   Charystream — présentation
+   ================================ */
+
+.charystream-board {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 32px 24px 40px;
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  box-shadow: 0 16px 36px var(--shadow);
+}
+
+.charystream-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.charystream-header h2 {
+  margin: 0;
+  color: var(--brown);
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.charystream-header p {
+  margin: 10px 0 0;
+  color: rgba(75, 22, 8, 0.75);
+  font-size: 1rem;
+}
+
+.charystream-content {
+  display: grid;
+  gap: 20px;
+}
+
+.charystream-hero-card,
+.charystream-card {
+  padding: 24px 28px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.10);
+}
+
+.charystream-hero-card {
+  background: linear-gradient(
+    135deg,
+    rgba(240, 100, 35, 0.95),
+    rgba(233, 90, 242, 0.88)
+  );
+}
+
+.charystream-card {
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.charystream-hero-card h3,
+.charystream-card h3 {
+  margin: 0 0 12px;
+  color: var(--brown);
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+}
+
+.charystream-hero-card p,
+.charystream-card p {
+  margin: 0 0 10px;
+  line-height: 1.48;
+  font-size: 1rem;
+}
+
+.charystream-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.charystream-stat-card {
+  padding: 22px 18px;
+  text-align: center;
+  background: var(--brown);
+  color: white;
+  border-radius: 24px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.charystream-stat-card strong {
+  display: block;
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  line-height: 1;
+}
+
+.charystream-stat-card span {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.95rem;
+  opacity: 0.88;
+}
+
+.charystream-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 12px 0 0;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: var(--brown);
+  color: white;
+  text-decoration: none;
+  font-weight: 900;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+}
+
+.charystream-button.secondary {
+  background: linear-gradient(135deg, var(--orange), var(--pink));
+}
+
+.charystream-button:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 800px) {
+  .charystream-stat-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .charystream-board {
+    padding: 24px 12px 30px;
+    border-radius: 20px;
+  }
+
+  .charystream-hero-card,
+  .charystream-card {
+    padding: 20px 18px;
+    border-radius: 20px;
   }
 }
