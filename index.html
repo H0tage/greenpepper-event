@@ -2,19 +2,34 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
+
+  <!-- Titre affiché dans l’onglet du navigateur -->
   <title>Greenpepper au Charystream</title>
+
+  <!-- Permet un affichage correct sur mobile -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Fichier CSS externe : toute l’apparence du site est dedans -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Fichier JavaScript externe : gère le changement d’onglet -->
   <script src="js/app.js" defer></script>
 </head>
 
 <body>
   <main>
+    <!-- Titre principal de la page -->
     <header class="page-title">
       <h1>Greenpepper au Charystream</h1>
     </header>
 
+    <!-- Barre d’onglets -->
+    <!--
+      Chaque bouton possède un data-target.
+      Ce data-target correspond à l’id de la section à afficher.
+      Exemple :
+      data-target="donation-goals" affiche <section id="donation-goals">
+    -->
     <nav class="tabs" aria-label="Sélection du contenu">
       <button class="tab active" type="button" data-target="donation-goals">
         Donation goals
@@ -25,9 +40,18 @@
       </button>
     </nav>
 
+    <!-- Section Donation goals -->
+    <!--
+      Elle est affichée par défaut grâce à la classe "active".
+      Le JavaScript enlève/ajoute cette classe selon l’onglet sélectionné.
+    -->
     <section id="donation-goals" class="content active">
       <div class="goals-board">
+
+        <!-- En-tête du tableau des donation goals -->
         <div class="goals-header">
+
+          <!-- Icône rose à gauche, dessinée en SVG directement dans le HTML -->
           <div class="goal-icon" aria-hidden="true">
             <svg viewBox="0 0 64 64">
               <path d="M18 34h9l8 8h9c5 0 8 3 8 7v1H28l-13-7H8v-9h10z"></path>
@@ -35,18 +59,31 @@
             </svg>
           </div>
 
+          <!-- Titre Donation goals + sous-titre GreenPepperCH -->
           <div class="goal-title-block">
             <h2 class="goal-title">Donation goals</h2>
             <div class="goal-subtitle">GreenPepperCH</div>
             <div class="header-line"></div>
           </div>
 
+          <!-- Zone droite : badge CharyStream + portrait -->
           <div class="streamer-area">
             <div class="charystream-badge">CharyStream<br>2026</div>
+
+            <!--
+              Image du streamer.
+              Le fichier doit exister ici :
+              assets/greenpepper.webp
+            -->
             <img class="streamer-photo" src="assets/greenpepper.webp" alt="Greenpepper">
           </div>
         </div>
 
+        <!-- Liste complète des donation goals -->
+        <!--
+          Chaque ligne est un <li>.
+          La classe orange ou pink détermine la couleur de la barre.
+        -->
         <ul class="goals-list">
           <li class="goal-row orange">
             <span class="amount">25€</span>
@@ -141,10 +178,17 @@
       </div>
     </section>
 
+    <!-- Section Planning -->
+    <!--
+      Pour l’instant, elle affiche une image.
+      Le fichier attendu est :
+      planning/planning.png
+    -->
     <section id="planning" class="content">
       <img class="planning-image" src="planning/planning.png" alt="Planning Greenpepper au Charystream">
     </section>
 
+    <!-- Footer discret -->
     <footer class="site-footer">
       made with love by H0tage <span>(grinefrerot)</span>
     </footer>
