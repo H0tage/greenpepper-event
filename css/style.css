@@ -1,5 +1,5 @@
 /* ================================
-   Variables globales
+   Variables
    ================================ */
 
 :root {
@@ -10,14 +10,28 @@
   --red: #ff443a;
   --text: #3f160a;
   --line: rgba(75, 22, 8, 0.65);
+  --muted: rgba(75, 22, 8, 0.75);
   --tab-bg: rgba(255, 255, 255, 0.55);
-  --shadow: rgba(0, 0, 0, 0.18);
+  --panel-bg: rgba(255, 255, 255, 0.28);
+  --card-bg: rgba(255, 255, 255, 0.42);
+  --soft-card-bg: rgba(255, 255, 255, 0.55);
   --border: rgba(66, 21, 8, 0.18);
+  --shadow: rgba(0, 0, 0, 0.18);
+  --soft-shadow: rgba(0, 0, 0, 0.12);
+  --gradient-brand: linear-gradient(135deg, var(--orange), var(--pink));
+  --gradient-orange: linear-gradient(90deg, #f47b20 0%, var(--orange) 100%);
+  --gradient-pink: linear-gradient(90deg, #e95af2 0%, #e86af2 100%);
+  --gradient-red: linear-gradient(90deg, #ff443a 0%, var(--red) 100%);
+  --gradient-card: linear-gradient(
+    135deg,
+    rgba(240, 100, 35, 0.95),
+    rgba(233, 90, 242, 0.88)
+  );
 }
 
 
 /* ================================
-   Base générale
+   Base
    ================================ */
 
 * {
@@ -26,9 +40,9 @@
 
 html,
 body {
+  min-height: 100%;
   margin: 0;
   padding: 0;
-  min-height: 100%;
   background: var(--page-bg);
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
@@ -46,26 +60,21 @@ main {
 
 
 /* ================================
-   Titre principal
+   Title and tabs
    ================================ */
 
 .page-title {
-  text-align: center;
   margin-bottom: 26px;
+  text-align: center;
 }
 
 .page-title h1 {
   margin: 0;
+  color: var(--brown);
   font-size: clamp(2rem, 5vw, 4rem);
   line-height: 1.05;
   letter-spacing: -0.04em;
-  color: var(--brown);
 }
-
-
-/* ================================
-   Onglets
-   ================================ */
 
 .tabs {
   display: grid;
@@ -74,19 +83,19 @@ main {
   max-width: 1100px;
   margin: 0 auto 30px;
   padding: 8px;
-  background: var(--tab-bg);
   border: 1px solid var(--border);
   border-radius: 999px;
+  background: var(--tab-bg);
   box-shadow: 0 12px 32px var(--shadow);
 }
 
 .tab {
-  border: 0;
-  cursor: pointer;
   padding: 16px 14px;
+  border: 0;
   border-radius: 999px;
   background: transparent;
   color: var(--brown);
+  cursor: pointer;
   font-size: clamp(0.9rem, 2.1vw, 1.15rem);
   font-weight: 800;
   line-height: 1.1;
@@ -95,21 +104,16 @@ main {
 }
 
 .tab:hover {
-  opacity: 1;
   background: rgba(255, 255, 255, 0.45);
+  opacity: 1;
 }
 
 .tab.active {
-  opacity: 1;
-  color: white;
-  background: linear-gradient(135deg, var(--orange), var(--pink));
+  background: var(--gradient-brand);
   box-shadow: 0 10px 24px rgba(240, 100, 35, 0.25);
+  color: white;
+  opacity: 1;
 }
-
-
-/* ================================
-   Affichage des onglets
-   ================================ */
 
 .content {
   display: none;
@@ -122,21 +126,136 @@ main {
 
 
 /* ================================
-   Donation goals — conteneur
+   Shared panels and cards
+   ================================ */
+
+.schedule-board,
+.puzzle-board,
+.charystream-board {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: var(--panel-bg);
+  box-shadow: 0 16px 36px var(--shadow);
+}
+
+.schedule-board {
+  padding: 28px 18px 38px;
+}
+
+.puzzle-board,
+.charystream-board {
+  padding: 32px 24px 40px;
+}
+
+.schedule-header,
+.puzzle-header,
+.charystream-header {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.schedule-header h2,
+.puzzle-header h2,
+.charystream-header h2 {
+  margin: 0;
+  color: var(--brown);
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.schedule-header p,
+.puzzle-header p,
+.charystream-header p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.puzzle-hero-card,
+.puzzle-card,
+.puzzle-final-card,
+.charystream-hero-card,
+.charystream-card {
+  padding: 24px 28px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.10);
+}
+
+.puzzle-hero-card,
+.charystream-hero-card {
+  background: var(--gradient-card);
+}
+
+.puzzle-card,
+.charystream-card {
+  background: var(--card-bg);
+}
+
+.puzzle-hero-card h3,
+.puzzle-card h3,
+.puzzle-final-card h3,
+.charystream-hero-card h3,
+.charystream-card h3 {
+  margin: 0 0 12px;
+  color: var(--brown);
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+}
+
+.puzzle-final-card h3 {
+  color: white;
+}
+
+.puzzle-hero-card p,
+.puzzle-card p,
+.puzzle-final-card p,
+.charystream-hero-card p,
+.charystream-card p {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  line-height: 1.48;
+}
+
+.puzzle-hero-card p:last-child,
+.puzzle-card p:last-child,
+.puzzle-final-card p:last-child {
+  margin-bottom: 0;
+}
+
+.puzzle-button,
+.charystream-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 999px;
+  color: white;
+  font-weight: 900;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+}
+
+.puzzle-button:hover,
+.charystream-button:hover {
+  transform: translateY(-1px);
+}
+
+
+/* ================================
+   Donation goals
    ================================ */
 
 .goals-board {
   position: relative;
   width: 100%;
   padding: 34px 18px 48px;
-  background: var(--page-bg);
   overflow: hidden;
+  background: var(--page-bg);
 }
-
-
-/* ================================
-   Donation goals — en-tête
-   ================================ */
 
 .goals-header {
   position: relative;
@@ -149,25 +268,25 @@ main {
 }
 
 .goal-icon {
-  width: 86px;
-  height: 86px;
-  border-radius: 22px;
-  background: #f5a6eb;
-  transform: rotate(-14deg);
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 86px;
+  height: 86px;
   margin-top: 4px;
+  border-radius: 22px;
+  background: #f5a6eb;
+  transform: rotate(-14deg);
 }
 
 .goal-icon svg {
   width: 56px;
   height: 56px;
-  stroke: var(--brown);
-  stroke-width: 4.5;
   fill: none;
+  stroke: var(--brown);
   stroke-linecap: round;
   stroke-linejoin: round;
+  stroke-width: 4.5;
 }
 
 .goal-title-block {
@@ -178,8 +297,8 @@ main {
   margin: 0;
   color: var(--brown);
   font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-  line-height: 0.95;
   font-weight: 900;
+  line-height: 0.95;
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
@@ -193,8 +312,8 @@ main {
 }
 
 .header-line {
-  height: 2px;
   width: 100%;
+  height: 2px;
   margin-top: 14px;
   background: var(--line);
 }
@@ -204,11 +323,6 @@ main {
   color: var(--brown);
   font-size: clamp(0.95rem, 1.5vw, 1.15rem);
 }
-
-
-/* ================================
-   Donation goals — portrait
-   ================================ */
 
 .streamer-area {
   position: relative;
@@ -220,54 +334,49 @@ main {
   z-index: 2;
   top: 26px;
   left: -28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 200px;
   height: 82px;
   border-radius: 50%;
   background: var(--brown);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 1.9rem;
-  line-height: 0.9;
-  font-style: italic;
-  transform: rotate(5deg);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+  color: white;
+  font-size: 1.9rem;
+  font-style: italic;
+  line-height: 0.9;
+  text-align: center;
+  transform: rotate(5deg);
 }
 
 .streamer-photo {
   position: absolute;
+  z-index: 1;
   top: -20px;
   right: 8px;
-  z-index: 1;
   width: 170px;
   aspect-ratio: 3 / 4;
-  object-fit: cover;
   border-radius: 16px;
-  transform: rotate(-8deg);
+  object-fit: cover;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  transform: rotate(-8deg);
 }
-
-
-/* ================================
-   Donation goals — liste
-   ================================ */
 
 .goals-list {
   display: flex;
   flex-direction: column;
   gap: 28px;
-  padding: 0 70px 0 74px;
   margin: 0;
+  padding: 0 70px 0 74px;
   list-style: none;
 }
 
 .goal-row {
   position: relative;
-  min-height: 52px;
   display: flex;
   align-items: center;
+  min-height: 52px;
   padding: 12px 28px 12px 76px;
   border-radius: 0 999px 999px 0;
   color: var(--text);
@@ -276,40 +385,40 @@ main {
 }
 
 .goal-row.orange {
-  background: linear-gradient(90deg, #f47b20 0%, var(--orange) 100%);
+  background: var(--gradient-orange);
 }
 
 .goal-row.pink {
-  background: linear-gradient(90deg, #e95af2 0%, #e86af2 100%);
+  background: var(--gradient-pink);
 }
 
 .goal-row.red {
-  background: linear-gradient(90deg, #ff443a 0%, var(--red) 100%);
+  background: var(--gradient-red);
 }
 
 .goal-row.fil-rouge {
   min-height: 76px;
-  padding-left: 120px;
   margin-bottom: 2px;
+  padding-left: 120px;
 }
 
 .amount {
   position: absolute;
-  left: -40px;
   top: 50%;
-  transform: translateY(-50%) rotate(-4deg);
+  left: -40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-width: 106px;
   height: 50px;
   padding: 0 18px;
   border-radius: 999px;
   background: var(--brown);
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: clamp(1.2rem, 2vw, 1.65rem);
   font-style: italic;
   white-space: nowrap;
+  transform: translateY(-50%) rotate(-4deg);
 }
 
 .amount-long {
@@ -324,42 +433,7 @@ main {
 
 
 /* ================================
-   Planning — conteneur
-   ================================ */
-
-.schedule-board {
-  width: 100%;
-  max-width: 1050px;
-  margin: 0 auto;
-  padding: 28px 18px 38px;
-  background: rgba(255, 255, 255, 0.28);
-  border: 1px solid var(--border);
-  border-radius: 28px;
-  box-shadow: 0 16px 36px var(--shadow);
-}
-
-.schedule-header {
-  text-align: center;
-  margin-bottom: 28px;
-}
-
-.schedule-header h2 {
-  margin: 0;
-  color: var(--brown);
-  font-size: clamp(2rem, 4vw, 3rem);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-.schedule-header p {
-  margin: 10px 0 0;
-  color: rgba(75, 22, 8, 0.75);
-  font-size: 1rem;
-}
-
-
-/* ================================
-   Planning — timeline
+   Schedule
    ================================ */
 
 .schedule-timeline {
@@ -381,11 +455,6 @@ main {
   background: rgba(75, 22, 8, 0.22);
 }
 
-
-/* ================================
-   Planning — séparateurs de jours
-   ================================ */
-
 .day-separator {
   position: relative;
   z-index: 2;
@@ -399,8 +468,8 @@ main {
 .day-separator::before,
 .day-separator::after {
   content: "";
-  height: 3px;
   flex: 1;
+  height: 3px;
   border-radius: 999px;
   background: var(--brown);
   opacity: 0.75;
@@ -410,27 +479,22 @@ main {
   padding: 8px 26px;
   border-radius: 999px;
   background: var(--brown);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
   color: white;
   font-size: clamp(1.1rem, 2vw, 1.45rem);
   font-weight: 900;
-  text-transform: uppercase;
   letter-spacing: 0.04em;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+  text-transform: uppercase;
   white-space: nowrap;
 }
-
-
-/* ================================
-   Planning — activités
-   ================================ */
 
 .schedule-item {
   position: relative;
   z-index: 1;
   display: grid;
   grid-template-columns: 110px 1fr;
-  gap: 18px;
   align-items: stretch;
+  gap: 18px;
   min-height: 92px;
 }
 
@@ -438,19 +502,19 @@ main {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
   align-self: center;
+  justify-content: center;
   min-height: 52px;
   padding: 0 10px;
   border-radius: 999px;
   background: var(--brown);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
   color: white;
   font-size: 1.05rem;
-  font-weight: 900;
   font-style: italic;
+  font-weight: 900;
   line-height: 1.05;
   text-align: center;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
 }
 
 .schedule-time::after {
@@ -464,18 +528,14 @@ main {
   background: var(--page-bg);
 }
 
-.schedule-item.is-future .schedule-time::after {
-  background: var(--page-bg);
-}
-
 .schedule-item.is-past .schedule-time::after {
-  background: #111111;
   border-color: #111111;
+  background: #111111;
 }
 
 .schedule-item.is-live .schedule-time::after {
-  background: #36e66f;
   border-color: #18704a;
+  background: #36e66f;
   box-shadow: 0 0 0 0 rgba(54, 230, 111, 0.65);
   animation: livePulse 2.2s ease-in-out infinite;
 }
@@ -483,16 +543,16 @@ main {
 .schedule-content {
   padding: 18px 24px;
   border-radius: 24px;
+  box-shadow: 0 10px 24px var(--soft-shadow);
   color: var(--text);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
 }
 
 .schedule-item.orange .schedule-content {
-  background: linear-gradient(90deg, #f47b20 0%, var(--orange) 100%);
+  background: var(--gradient-orange);
 }
 
 .schedule-item.pink .schedule-content {
-  background: linear-gradient(90deg, #e95af2 0%, #e86af2 100%);
+  background: var(--gradient-pink);
 }
 
 .schedule-content h3 {
@@ -507,11 +567,6 @@ main {
   font-size: clamp(0.95rem, 1.6vw, 1.1rem);
   line-height: 1.35;
 }
-
-
-/* ================================
-   Planning — participants
-   ================================ */
 
 .people-list {
   display: flex;
@@ -533,79 +588,193 @@ main {
 }
 
 .person-chip::before {
-  content: "●";
+  content: "\\25CF";
   margin-right: 7px;
-  font-size: 0.65rem;
   color: #18704a;
+  font-size: 0.65rem;
 }
 
 
 /* ================================
-   Puzzle communautaire
+   Community puzzle
    ================================ */
 
-.puzzle-board {
+.puzzle-content {
+  display: grid;
+  gap: 20px;
+}
+
+.puzzle-credit {
+  margin-top: 6px;
+  color: rgba(75, 22, 8, 0.55);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.puzzle-hero-card {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 22px;
+}
+
+.puzzle-final-card {
+  background: var(--brown);
+  color: white;
+  text-align: center;
+}
+
+.puzzle-quick-info {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  gap: 10px;
+}
+
+.puzzle-quick-info span {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--brown);
+  font-weight: 900;
+}
+
+.puzzle-button {
+  margin: 10px 0 12px;
+  background: var(--gradient-brand);
+}
+
+.puzzle-note {
+  color: rgba(75, 22, 8, 0.78);
+  font-size: 0.95rem;
+}
+
+.puzzle-definition-list {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.puzzle-definition-list div {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: var(--soft-card-bg);
+}
+
+.puzzle-definition-list strong {
+  color: var(--brown);
+}
+
+.puzzle-screen {
+  display: block;
   width: 100%;
-  max-width: 1050px;
-  margin: 0 auto;
-  padding: 32px 24px 40px;
-  background: rgba(255, 255, 255, 0.28);
-  border: 1px solid var(--border);
-  border-radius: 28px;
-  box-shadow: 0 16px 36px var(--shadow);
+  max-width: 420px;
+  height: auto;
+  margin: 18px auto 0;
+  border: 1px solid rgba(75, 22, 8, 0.12);
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
 }
 
-.puzzle-header {
-  text-align: center;
-  margin-bottom: 28px;
-}
-
-.puzzle-header h2 {
-  margin: 0;
-  color: var(--brown);
-  font-size: clamp(2rem, 4vw, 3rem);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-.puzzle-header p {
-  margin: 10px 0 0;
-  color: rgba(75, 22, 8, 0.75);
-  font-size: 1rem;
-}
-
-.puzzle-placeholder {
-  padding: 36px 24px;
-  text-align: center;
-  background: linear-gradient(135deg, var(--orange), var(--pink));
-  border-radius: 24px;
-  color: var(--brown);
-  font-size: 1.2rem;
-  font-weight: 800;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+.puzzle-screen-small {
+  max-width: 280px;
 }
 
 
 /* ================================
-   Footer
+   Charystream
+   ================================ */
+
+.charystream-hero-card {
+  margin-bottom: 12px;
+}
+
+.charystream-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 16px 0 14px;
+}
+
+.charystream-stat-card {
+  padding: 22px 18px;
+  border-radius: 24px;
+  background: var(--brown);
+  box-shadow: 0 10px 24px var(--soft-shadow);
+  color: white;
+  text-align: center;
+}
+
+.charystream-stat-card strong {
+  display: block;
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  line-height: 1;
+}
+
+.charystream-stat-card span {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.95rem;
+  opacity: 0.88;
+}
+
+.charystream-card {
+  margin-top: 6px;
+}
+
+.charystream-button {
+  margin: 12px 0 0;
+  background: var(--brown);
+}
+
+.charystream-button.secondary {
+  background: var(--gradient-brand);
+}
+
+.charystream-date-badge {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 2px 0 18px;
+  padding: 12px 18px;
+  border-radius: 18px;
+  background: var(--brown);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+  color: white;
+}
+
+.charystream-date-badge strong {
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  opacity: 0.82;
+  text-transform: uppercase;
+}
+
+.charystream-date-badge span {
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+
+/* ================================
+   Footer and animations
    ================================ */
 
 .site-footer {
   margin-top: 34px;
-  text-align: center;
   color: rgba(75, 22, 8, 0.45);
   font-size: 0.82rem;
   font-style: italic;
+  text-align: center;
 }
 
 .site-footer span {
   opacity: 0.75;
 }
-
-
-/* ================================
-   Animations
-   ================================ */
 
 @keyframes fadeIn {
   from {
@@ -638,7 +807,7 @@ main {
 
 
 /* ================================
-   Responsive — tablette
+   Responsive
    ================================ */
 
 @media (max-width: 900px) {
@@ -654,8 +823,8 @@ main {
 
   .charystream-badge {
     top: 8px;
-    left: auto;
     right: 128px;
+    left: auto;
     width: 150px;
     height: 62px;
     font-size: 1.35rem;
@@ -679,8 +848,8 @@ main {
   }
 
   .goals-list {
-    padding: 0 12px 0 44px;
     gap: 18px;
+    padding: 0 12px 0 44px;
   }
 
   .goal-row {
@@ -705,12 +874,17 @@ main {
     height: 54px;
     font-size: 0.85rem;
   }
+
+  .puzzle-hero-card {
+    grid-template-columns: 1fr;
+  }
 }
 
-
-/* ================================
-   Responsive — planning et puzzle
-   ================================ */
+@media (max-width: 800px) {
+  .charystream-stat-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 @media (max-width: 700px) {
   .schedule-board {
@@ -718,10 +892,16 @@ main {
     border-radius: 20px;
   }
 
+  .puzzle-board,
+  .charystream-board {
+    padding: 24px 12px 30px;
+    border-radius: 20px;
+  }
+
   .schedule-timeline {
-    padding-left: 8px;
-    padding-right: 4px;
     gap: 14px;
+    padding-right: 4px;
+    padding-left: 8px;
   }
 
   .schedule-timeline::before {
@@ -760,8 +940,8 @@ main {
   .day-separator span {
     padding: 8px 14px;
     font-size: 0.95rem;
-    white-space: normal;
     text-align: center;
+    white-space: normal;
   }
 
   .person-chip {
@@ -769,21 +949,20 @@ main {
     font-size: 0.75rem;
   }
 
-  .puzzle-board {
-    padding: 24px 12px 30px;
+  .puzzle-hero-card,
+  .puzzle-card,
+  .puzzle-final-card,
+  .charystream-hero-card,
+  .charystream-card {
+    padding: 20px 18px;
     border-radius: 20px;
   }
 
-  .puzzle-placeholder {
-    padding: 28px 16px;
-    border-radius: 18px;
+  .puzzle-definition-list div {
+    grid-template-columns: 1fr;
+    gap: 6px;
   }
 }
-
-
-/* ================================
-   Responsive — mobile
-   ================================ */
 
 @media (max-width: 600px) {
   body {
@@ -791,16 +970,16 @@ main {
   }
 
   .tabs {
-    border-radius: 22px;
     gap: 6px;
     padding: 6px;
+    border-radius: 22px;
   }
 
-.tab {
-  border-radius: 16px;
-  padding: 11px 5px;
-  font-size: 0.68rem;
-}
+  .tab {
+    padding: 11px 5px;
+    border-radius: 16px;
+    font-size: 0.68rem;
+  }
 
   .goals-board {
     padding: 22px 6px 34px;
@@ -843,14 +1022,14 @@ main {
   }
 
   .streamer-photo {
-    width: 82px;
     right: 8px;
+    width: 82px;
   }
 
   .goals-list {
-    padding-left: 34px;
-    padding-right: 4px;
     gap: 14px;
+    padding-right: 4px;
+    padding-left: 34px;
   }
 
   .goal-row {
@@ -880,389 +1059,18 @@ main {
     font-size: 0.62rem;
     line-height: 1.05;
   }
-}
 
-/* ================================
-   Puzzle communautaire — contenu
-   ================================ */
-
-.puzzle-content {
-  display: grid;
-  gap: 20px;
-}
-
-.puzzle-hero-card,
-.puzzle-card,
-.puzzle-final-card {
-  padding: 24px 28px;
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.10);
-}
-
-.puzzle-hero-card {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 22px;
-  background: linear-gradient(
-    135deg,
-    rgba(240, 100, 35, 0.95),
-    rgba(233, 90, 242, 0.88)
-  );
-}
-
-.puzzle-card {
-  background: rgba(255, 255, 255, 0.42);
-}
-
-.puzzle-final-card {
-  text-align: center;
-  background: var(--brown);
-  color: white;
-}
-
-.puzzle-hero-card h3,
-.puzzle-card h3,
-.puzzle-final-card h3 {
-  margin: 0 0 12px;
-  color: var(--brown);
-  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
-}
-
-.puzzle-final-card h3 {
-  color: white;
-}
-
-.puzzle-hero-card p,
-.puzzle-card p,
-.puzzle-final-card p {
-  margin: 0 0 10px;
-  line-height: 1.48;
-  font-size: 1rem;
-}
-
-.puzzle-hero-card p:last-child,
-.puzzle-card p:last-child,
-.puzzle-final-card p:last-child {
-  margin-bottom: 0;
-}
-
-.puzzle-quick-info {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-self: center;
-}
-
-.puzzle-quick-info span {
-  display: block;
-  padding: 12px 14px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.65);
-  color: var(--brown);
-  font-weight: 900;
-}
-
-.puzzle-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin: 10px 0 12px;
-  padding: 12px 18px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--orange), var(--pink));
-  color: white;
-  text-decoration: none;
-  font-weight: 900;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
-}
-
-.puzzle-button:hover {
-  transform: translateY(-1px);
-}
-
-.puzzle-note {
-  color: rgba(75, 22, 8, 0.78);
-  font-size: 0.95rem;
-}
-
-.puzzle-definition-list {
-  display: grid;
-  gap: 10px;
-  margin: 14px 0;
-}
-
-.puzzle-definition-list div {
-  display: grid;
-  grid-template-columns: 170px 1fr;
-  gap: 14px;
-  padding: 14px 16px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.55);
-}
-
-.puzzle-definition-list strong {
-  color: var(--brown);
-}
-
-
-/* ================================
-   Puzzle communautaire — responsive
-   ================================ */
-
-@media (max-width: 900px) {
-  .puzzle-hero-card {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 700px) {
-  .puzzle-hero-card,
-  .puzzle-card,
-  .puzzle-final-card {
-    padding: 20px 18px;
-    border-radius: 20px;
-  }
-
-  .puzzle-definition-list div {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
-}
-.puzzle-credit {
-  margin-top: 6px;
-  color: rgba(75, 22, 8, 0.55);
-  font-size: 0.9rem;
-  font-style: italic;
-}
-
-/* ================================
-   Puzzle communautaire — captures d'écran
-   ================================ */
-
-.puzzle-screen {
-  display: block;
-  width: 100%;
-  max-width: 420px;
-  height: auto;
-  margin: 18px auto 0;
-  border-radius: 18px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
-  border: 1px solid rgba(75, 22, 8, 0.12);
-}
-
-/* Variante plus petite pour l'image des Merges */
-.puzzle-screen-small {
-  max-width: 280px;
-}
-
-/* Responsive mobile */
-@media (max-width: 600px) {
   .puzzle-screen {
     max-width: 100%;
-    border-radius: 14px;
     margin-top: 14px;
+    border-radius: 14px;
   }
 
   .puzzle-screen-small {
     max-width: 240px;
   }
-}
 
-/* ================================
-   Charystream — présentation
-   ================================ */
-
-.charystream-board {
-  width: 100%;
-  max-width: 1050px;
-  margin: 0 auto;
-  padding: 32px 24px 40px;
-  background: rgba(255, 255, 255, 0.28);
-  border: 1px solid var(--border);
-  border-radius: 28px;
-  box-shadow: 0 16px 36px var(--shadow);
-}
-
-.charystream-header {
-  text-align: center;
-  margin-bottom: 28px;
-}
-
-.charystream-header h2 {
-  margin: 0;
-  color: var(--brown);
-  font-size: clamp(2rem, 4vw, 3rem);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-.charystream-header p {
-  margin: 10px 0 0;
-  color: rgba(75, 22, 8, 0.75);
-  font-size: 1rem;
-}
-
-.charystream-content {
-  display: grid;
-  gap: 20px;
-}
-
-.charystream-hero-card,
-.charystream-card {
-  padding: 24px 28px;
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.10);
-}
-
-.charystream-hero-card {
-  background: linear-gradient(
-    135deg,
-    rgba(240, 100, 35, 0.95),
-    rgba(233, 90, 242, 0.88)
-  );
-}
-
-.charystream-card {
-  background: rgba(255, 255, 255, 0.42);
-}
-
-.charystream-hero-card h3,
-.charystream-card h3 {
-  margin: 0 0 12px;
-  color: var(--brown);
-  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
-}
-
-.charystream-hero-card p,
-.charystream-card p {
-  margin: 0 0 10px;
-  line-height: 1.48;
-  font-size: 1rem;
-}
-
-.charystream-stat-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.charystream-stat-card {
-  padding: 22px 18px;
-  text-align: center;
-  background: var(--brown);
-  color: white;
-  border-radius: 24px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
-}
-
-.charystream-stat-card strong {
-  display: block;
-  font-size: clamp(1.7rem, 3vw, 2.5rem);
-  line-height: 1;
-}
-
-.charystream-stat-card span {
-  display: block;
-  margin-top: 8px;
-  font-size: 0.95rem;
-  opacity: 0.88;
-}
-
-.charystream-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin: 12px 0 0;
-  padding: 12px 18px;
-  border-radius: 999px;
-  background: var(--brown);
-  color: white;
-  text-decoration: none;
-  font-weight: 900;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
-}
-
-.charystream-button.secondary {
-  background: linear-gradient(135deg, var(--orange), var(--pink));
-}
-
-.charystream-button:hover {
-  transform: translateY(-1px);
-}
-
-@media (max-width: 800px) {
-  .charystream-stat-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 700px) {
-  .charystream-board {
-    padding: 24px 12px 30px;
-    border-radius: 20px;
-  }
-
-  .charystream-hero-card,
-  .charystream-card {
-    padding: 20px 18px;
-    border-radius: 20px;
-  }
-}
-
-/* ================================
-   Charystream — dates 2026
-   ================================ */
-
-.charystream-date-badge {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 4px;
-  margin: 2px 0 18px;
-  padding: 12px 18px;
-  border-radius: 18px;
-  background: var(--brown);
-  color: white;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
-}
-
-.charystream-date-badge strong {
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  opacity: 0.82;
-}
-
-.charystream-date-badge span {
-  font-size: clamp(1.1rem, 2vw, 1.45rem);
-  font-weight: 900;
-  line-height: 1.1;
-}
-
-@media (max-width: 600px) {
   .charystream-date-badge {
     width: 100%;
   }
-}
-
-/* ================================
-   Charystream — respiration des blocs
-   ================================ */
-
-.charystream-content {
-  gap: 34px;
-}
-
-.charystream-hero-card {
-  margin-bottom: 12px;
-}
-
-.charystream-stat-grid {
-  gap: 24px;
-  margin: 16px 0 14px;
-}
-
-.charystream-card {
-  margin-top: 6px;
 }
