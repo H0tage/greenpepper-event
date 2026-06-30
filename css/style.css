@@ -387,7 +387,7 @@ main {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
   max-height: 720px;
   overflow-y: auto;
   padding: 0 10px 8px 28px;
