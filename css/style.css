@@ -1035,3 +1035,36 @@ main {
   font-size: 0.9rem;
   font-style: italic;
 }
+
+/* ================================
+   Puzzle communautaire — captures d'écran
+   ================================ */
+
+.puzzle-screen {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  margin: 18px auto 0;
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(75, 22, 8, 0.12);
+}
+
+/* Variante plus petite pour l'image des Merges */
+.puzzle-screen-small {
+  max-width: 280px;
+}
+
+/* Responsive mobile */
+@media (max-width: 600px) {
+  .puzzle-screen {
+    max-width: 100%;
+    border-radius: 14px;
+    margin-top: 14px;
+  }
+
+  .puzzle-screen-small {
+    max-width: 240px;
+  }
+}
