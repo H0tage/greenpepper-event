@@ -881,3 +881,151 @@ main {
     line-height: 1.05;
   }
 }
+
+/* ================================
+   Puzzle communautaire — contenu
+   ================================ */
+
+.puzzle-content {
+  display: grid;
+  gap: 20px;
+}
+
+.puzzle-hero-card,
+.puzzle-card,
+.puzzle-final-card {
+  padding: 24px 28px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.10);
+}
+
+.puzzle-hero-card {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 22px;
+  background: linear-gradient(
+    135deg,
+    rgba(240, 100, 35, 0.95),
+    rgba(233, 90, 242, 0.88)
+  );
+}
+
+.puzzle-card {
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.puzzle-final-card {
+  text-align: center;
+  background: var(--brown);
+  color: white;
+}
+
+.puzzle-hero-card h3,
+.puzzle-card h3,
+.puzzle-final-card h3 {
+  margin: 0 0 12px;
+  color: var(--brown);
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+}
+
+.puzzle-final-card h3 {
+  color: white;
+}
+
+.puzzle-hero-card p,
+.puzzle-card p,
+.puzzle-final-card p {
+  margin: 0 0 10px;
+  line-height: 1.48;
+  font-size: 1rem;
+}
+
+.puzzle-hero-card p:last-child,
+.puzzle-card p:last-child,
+.puzzle-final-card p:last-child {
+  margin-bottom: 0;
+}
+
+.puzzle-quick-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-self: center;
+}
+
+.puzzle-quick-info span {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--brown);
+  font-weight: 900;
+}
+
+.puzzle-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0 12px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--orange), var(--pink));
+  color: white;
+  text-decoration: none;
+  font-weight: 900;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+}
+
+.puzzle-button:hover {
+  transform: translateY(-1px);
+}
+
+.puzzle-note {
+  color: rgba(75, 22, 8, 0.78);
+  font-size: 0.95rem;
+}
+
+.puzzle-definition-list {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.puzzle-definition-list div {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.puzzle-definition-list strong {
+  color: var(--brown);
+}
+
+
+/* ================================
+   Puzzle communautaire — responsive
+   ================================ */
+
+@media (max-width: 900px) {
+  .puzzle-hero-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .puzzle-hero-card,
+  .puzzle-card,
+  .puzzle-final-card {
+    padding: 20px 18px;
+    border-radius: 20px;
+  }
+
+  .puzzle-definition-list div {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
