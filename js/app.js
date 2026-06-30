@@ -18,26 +18,12 @@ tabs.forEach((tab) => {
   });
 });
 
-function updateScheduleStatus() {
-  const now = new Date();
-  const scheduleItems = document.querySelectorAll(".schedule-item[data-start][data-end]");
+/*
+  TEST VISUEL :
+  force le premier événement du planning en "en cours".
+*/
+const firstScheduleItem = document.querySelector(".schedule-item");
 
-  scheduleItems.forEach((item) => {
-    const start = new Date(item.dataset.start);
-    const end = new Date(item.dataset.end);
-
-    item.classList.remove("is-past", "is-live", "is-future");
-
-    if (now < start) {
-      item.classList.add("is-future");
-    } else if (now >= start && now <= end) {
-      item.classList.add("is-live");
-    } else {
-      item.classList.add("is-past");
-    }
-  });
+if (firstScheduleItem) {
+  firstScheduleItem.classList.add("is-live");
 }
-
-updateScheduleStatus();
-
-setInterval(updateScheduleStatus, 60000);
