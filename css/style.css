@@ -1029,3 +1029,9 @@ main {
     gap: 6px;
   }
 }
+.puzzle-credit {
+  margin-top: 6px;
+  color: rgba(75, 22, 8, 0.55);
+  font-size: 0.9rem;
+  font-style: italic;
+}
