@@ -13,50 +13,62 @@ const tabs = document.querySelectorAll(".tab");
 const contents = document.querySelectorAll(".content");
 
 /*
-  Pour chaque onglet, on ajoute un écouteur de clic.
-  Quand l’utilisateur clique sur un onglet :
-  1. on récupère la section cible via data-target ;
-  2. on désactive tous les onglets ;
-  3. on masque tous les contenus ;
-  4. on active l’onglet cliqué ;
-  5. on affiche la section correspondante.
+  Nom de la clé utilisée dans le localStorage.
+  C’est sous ce nom que le navigateur mémorise le dernier onglet ouvert.
+*/
+const storageKey = "greenpepper-last-tab";
+
+/*
+  Active un onglet donné.
+  Exemple :
+  activateTab("planning")
+  affiche l’onglet Planning.
+*/
+function activateTab(target) {
+  const selectedTab = document.querySelector(`.tab[data-target="${target}"]`);
+  const selectedContent = document.getElementById(target);
+
+  /*
+    Sécurité :
+    si l’onglet ou la section n’existe pas, on ne fait rien.
+  */
+  if (!selectedTab || !selectedContent) {
+    return;
+  }
+
+  tabs.forEach((item) => {
+    item.classList.remove("active");
+  });
+
+  contents.forEach((content) => {
+    content.classList.remove("active");
+  });
+
+  selectedTab.classList.add("active");
+  selectedContent.classList.add("active");
+
+  /*
+    Mémorise le dernier onglet ouvert dans le navigateur.
+  */
+  localStorage.setItem(storageKey, target);
+}
+
+/*
+  Au chargement de la page, on récupère le dernier onglet ouvert.
+  Si rien n’est mémorisé, on garde Donation goals par défaut.
+*/
+const savedTab = localStorage.getItem(storageKey);
+
+if (savedTab) {
+  activateTab(savedTab);
+}
+
+/*
+  Gestion des clics sur les onglets.
 */
 tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
-    /*
-      Exemple :
-      Si le bouton contient data-target="planning",
-      alors target vaut "planning".
-    */
     const target = tab.dataset.target;
-
-    /*
-      Retire la classe active de tous les boutons.
-      Visuellement, plus aucun onglet n’est sélectionné.
-    */
-    tabs.forEach((item) => {
-      item.classList.remove("active");
-    });
-
-    /*
-      Retire la classe active de toutes les sections.
-      Donc toutes les sections sont cachées.
-    */
-    contents.forEach((content) => {
-      content.classList.remove("active");
-    });
-
-    /*
-      Active visuellement l’onglet sur lequel on vient de cliquer.
-    */
-    tab.classList.add("active");
-
-    /*
-      Affiche la section correspondant à l’onglet cliqué.
-      Exemple :
-      target = "planning"
-      document.getElementById("planning") récupère la section Planning.
-    */
-    document.getElementById(target).classList.add("active");
+    activateTab(target);
   });
 });
