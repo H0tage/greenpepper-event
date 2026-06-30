@@ -743,3 +743,32 @@ main {
     font-size: 0.95rem;
   }
 }
+
+.goal-row.red {
+  background: linear-gradient(90deg, #ff443a 0%, #ff3f37 100%);
+}
+
+.goal-row.fil-rouge {
+  min-height: 72px;
+  margin-bottom: 8px;
+}
+
+.goal-row.fil-rouge .amount {
+  min-width: 128px;
+  height: 58px;
+  font-size: clamp(0.95rem, 1.5vw, 1.25rem);
+  line-height: 1.05;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .goal-row.fil-rouge {
+    min-height: 64px;
+  }
+
+  .goal-row.fil-rouge .amount {
+    min-width: 86px;
+    height: 46px;
+    font-size: 0.72rem;
+  }
+}
