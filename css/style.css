@@ -1,3 +1,11 @@
+/* ================================
+   Variables globales
+   ================================ */
+
+/*
+  Les variables permettent de changer facilement les couleurs principales.
+  Exemple : si tu veux changer le rose partout, tu modifies --pink ici.
+*/
 :root {
   --page-bg: #ebe9dd;
   --brown: #4b1608;
@@ -10,10 +18,20 @@
   --border: rgba(66, 21, 8, 0.18);
 }
 
+
+/* ================================
+   Base générale
+   ================================ */
+
+/*
+  box-sizing: border-box évite beaucoup de problèmes de largeur.
+  Les paddings et bordures sont inclus dans la taille des éléments.
+*/
 * {
   box-sizing: border-box;
 }
 
+/* Style global de la page */
 html,
 body {
   margin: 0;
@@ -24,15 +42,22 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Marge intérieure générale de la page */
 body {
   padding: 28px 14px 48px;
 }
 
+/* Conteneur principal centré */
 main {
   width: 100%;
   max-width: 1250px;
   margin: 0 auto;
 }
+
+
+/* ================================
+   Titre principal
+   ================================ */
 
 .page-title {
   text-align: center;
@@ -47,6 +72,15 @@ main {
   color: var(--brown);
 }
 
+
+/* ================================
+   Onglets Donation goals / Planning
+   ================================ */
+
+/*
+  La barre d’onglets est une grille à deux colonnes.
+  Chaque bouton prend 50% de la largeur.
+*/
 .tabs {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -60,6 +94,7 @@ main {
   box-shadow: 0 12px 32px var(--shadow);
 }
 
+/* Style de base d’un onglet */
 .tab {
   border: 0;
   cursor: pointer;
@@ -73,11 +108,16 @@ main {
   transition: 160ms ease;
 }
 
+/* Survol de la souris */
 .tab:hover {
   opacity: 1;
   background: rgba(255, 255, 255, 0.45);
 }
 
+/*
+  Onglet actif.
+  Cette classe est ajoutée/enlevée par le JavaScript.
+*/
 .tab.active {
   opacity: 1;
   color: white;
@@ -85,14 +125,31 @@ main {
   box-shadow: 0 10px 24px rgba(240, 100, 35, 0.25);
 }
 
+
+/* ================================
+   Système d’affichage des contenus
+   ================================ */
+
+/*
+  Toutes les sections sont cachées par défaut.
+*/
 .content {
   display: none;
 }
 
+/*
+  Seule la section active est visible.
+  Cette classe est aussi gérée par le JavaScript.
+*/
 .content.active {
   display: block;
   animation: fadeIn 160ms ease;
 }
+
+
+/* ================================
+   Tableau Donation goals
+   ================================ */
 
 .goals-board {
   position: relative;
@@ -102,6 +159,12 @@ main {
   overflow: hidden;
 }
 
+/*
+  En-tête en trois zones :
+  1. icône
+  2. titre
+  3. badge + photo
+*/
 .goals-header {
   position: relative;
   display: grid;
@@ -112,6 +175,7 @@ main {
   margin-bottom: 18px;
 }
 
+/* Bloc rose incliné contenant l’icône */
 .goal-icon {
   width: 86px;
   height: 86px;
@@ -124,6 +188,7 @@ main {
   margin-top: 4px;
 }
 
+/* Style du dessin SVG dans l’icône */
 .goal-icon svg {
   width: 56px;
   height: 56px;
@@ -134,6 +199,7 @@ main {
   stroke-linejoin: round;
 }
 
+/* Bloc titre Donation goals */
 .goal-title-block {
   padding-top: 0;
 }
@@ -156,6 +222,7 @@ main {
   line-height: 1;
 }
 
+/* Ligne horizontale sous le sous-titre */
 .header-line {
   height: 2px;
   width: 100%;
@@ -163,11 +230,17 @@ main {
   background: var(--line);
 }
 
+
+/* ================================
+   Photo streamer + badge Charystream
+   ================================ */
+
 .streamer-area {
   position: relative;
   min-height: 160px;
 }
 
+/* Bulle marron CharyStream 2026 */
 .charystream-badge {
   position: absolute;
   z-index: 2;
@@ -189,6 +262,11 @@ main {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
 }
 
+/*
+  Photo du streamer.
+  Le ratio visuel est 3/4.
+  object-fit: cover évite de déformer l’image.
+*/
 .streamer-photo {
   position: absolute;
   top: -20px;
@@ -202,6 +280,15 @@ main {
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
+
+/* ================================
+   Liste des donation goals
+   ================================ */
+
+/*
+  Liste verticale des paliers.
+  gap contrôle l’espace entre les lignes.
+*/
 .goals-list {
   display: flex;
   flex-direction: column;
@@ -211,6 +298,7 @@ main {
   list-style: none;
 }
 
+/* Ligne de palier */
 .goal-row {
   position: relative;
   min-height: 52px;
@@ -223,14 +311,20 @@ main {
   line-height: 1.25;
 }
 
+/* Variante orange */
 .goal-row.orange {
   background: linear-gradient(90deg, #f47b20 0%, var(--orange) 100%);
 }
 
+/* Variante rose */
 .goal-row.pink {
   background: linear-gradient(90deg, #e95af2 0%, #e86af2 100%);
 }
 
+/*
+  Pastille du montant.
+  Elle est positionnée en absolu par rapport à la ligne.
+*/
 .amount {
   position: absolute;
   left: -40px;
@@ -250,6 +344,15 @@ main {
   white-space: nowrap;
 }
 
+
+/* ================================
+   Planning
+   ================================ */
+
+/*
+  Pour l’instant le planning est une image.
+  Elle prend toute la largeur disponible sans dépasser 1250px.
+*/
 .planning-image {
   display: block;
   width: 100%;
@@ -257,6 +360,11 @@ main {
   height: auto;
   margin: 0 auto;
 }
+
+
+/* ================================
+   Footer
+   ================================ */
 
 .site-footer {
   margin-top: 34px;
@@ -270,6 +378,12 @@ main {
   opacity: 0.75;
 }
 
+
+/* ================================
+   Animations
+   ================================ */
+
+/* Petite apparition douce lors du changement d’onglet */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -282,7 +396,16 @@ main {
   }
 }
 
+
+/* ================================
+   Responsive tablette
+   ================================ */
+
 @media (max-width: 900px) {
+  /*
+    L’en-tête passe de 3 colonnes à 2 colonnes.
+    La photo descend sous le titre.
+  */
   .goals-header {
     grid-template-columns: 70px 1fr;
     min-height: 160px;
@@ -337,6 +460,11 @@ main {
     font-size: 1.1rem;
   }
 }
+
+
+/* ================================
+   Responsive mobile
+   ================================ */
 
 @media (max-width: 600px) {
   body {
