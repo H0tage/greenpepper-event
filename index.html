@@ -7,11 +7,13 @@
 
   <style>
     :root {
-      --bg: #ebe9dd;
-      --text: #421508;
+      --page-bg: #ebe9dd;
+      --brown: #4b1608;
+      --orange: #f06423;
+      --pink: #e95af2;
+      --text: #3f160a;
+      --line: rgba(75, 22, 8, 0.65);
       --tab-bg: rgba(255, 255, 255, 0.55);
-      --tab-active: #f06423;
-      --tab-active-2: #e857ef;
       --shadow: rgba(0, 0, 0, 0.18);
       --border: rgba(66, 21, 8, 0.18);
     }
@@ -24,7 +26,7 @@
       margin: 0;
       padding: 0;
       min-height: 100%;
-      background: var(--bg);
+      background: var(--page-bg);
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
     }
@@ -39,17 +41,17 @@
       margin: 0 auto;
     }
 
-    header {
+    .page-title {
       text-align: center;
       margin-bottom: 26px;
     }
 
-    h1 {
+    .page-title h1 {
       margin: 0;
       font-size: clamp(2rem, 5vw, 4rem);
       line-height: 1.05;
       letter-spacing: -0.04em;
-      color: var(--text);
+      color: var(--brown);
     }
 
     .tabs {
@@ -71,7 +73,7 @@
       padding: 16px 18px;
       border-radius: 999px;
       background: transparent;
-      color: var(--text);
+      color: var(--brown);
       font-size: clamp(1rem, 2.4vw, 1.2rem);
       font-weight: 800;
       opacity: 0.7;
@@ -86,7 +88,7 @@
     .tab.active {
       opacity: 1;
       color: white;
-      background: linear-gradient(135deg, var(--tab-active), var(--tab-active-2));
+      background: linear-gradient(135deg, var(--orange), var(--pink));
       box-shadow: 0 10px 24px rgba(240, 100, 35, 0.25);
     }
 
@@ -99,21 +101,168 @@
       animation: fadeIn 160ms ease;
     }
 
-    .image-list {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
+    .goals-board {
+      position: relative;
+      width: 100%;
+      padding: 34px 18px 48px;
+      background: var(--page-bg);
+      overflow: hidden;
     }
 
-    .image-list img {
+    .goals-header {
+      position: relative;
+      display: grid;
+      grid-template-columns: 90px 1fr 310px;
+      align-items: start;
+      gap: 18px;
+      min-height: 180px;
+      margin-bottom: 18px;
+    }
+
+    .goal-icon {
+      width: 86px;
+      height: 86px;
+      border-radius: 22px;
+      background: #f5a6eb;
+      transform: rotate(-14deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 4px;
+    }
+
+    .goal-icon svg {
+      width: 56px;
+      height: 56px;
+      stroke: var(--brown);
+      stroke-width: 4.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .goal-title-block {
+      padding-top: 0;
+    }
+
+    .goal-title {
+      margin: 0;
+      color: var(--brown);
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+      line-height: 0.95;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .goal-subtitle {
+      margin-top: 8px;
+      color: var(--brown);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-style: italic;
+      line-height: 1;
+    }
+
+    .header-line {
+      height: 2px;
+      width: 100%;
+      margin-top: 14px;
+      background: var(--line);
+    }
+
+    .streamer-area {
+      position: relative;
+      min-height: 160px;
+    }
+
+    .charystream-badge {
+      position: absolute;
+      z-index: 2;
+      top: 26px;
+      left: -28px;
+      width: 200px;
+      height: 82px;
+      border-radius: 50%;
+      background: var(--brown);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 1.9rem;
+      line-height: 0.9;
+      font-style: italic;
+      transform: rotate(5deg);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+    }
+
+    .streamer-photo {
+      position: absolute;
+      top: -20px;
+      right: 8px;
+      z-index: 1;
+      width: 170px;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 16px;
+      transform: rotate(-8deg);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+    }
+
+    .goals-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      padding: 0 70px 0 74px;
+      margin: 0;
+      list-style: none;
+    }
+
+    .goal-row {
+      position: relative;
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      padding: 12px 28px 12px 76px;
+      border-radius: 0 999px 999px 0;
+      color: var(--text);
+      font-size: clamp(1rem, 1.55vw, 1.35rem);
+      line-height: 1.25;
+    }
+
+    .goal-row.orange {
+      background: linear-gradient(90deg, #f47b20 0%, var(--orange) 100%);
+    }
+
+    .goal-row.pink {
+      background: linear-gradient(90deg, #e95af2 0%, #e86af2 100%);
+    }
+
+    .amount {
+      position: absolute;
+      left: -40px;
+      top: 50%;
+      transform: translateY(-50%) rotate(-4deg);
+      min-width: 106px;
+      height: 50px;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: var(--brown);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(1.2rem, 2vw, 1.65rem);
+      font-style: italic;
+      white-space: nowrap;
+    }
+
+    .planning-image {
       display: block;
       width: 100%;
       max-width: 1250px;
       height: auto;
-      margin: 0;
-      padding: 0;
-      border: 0;
+      margin: 0 auto;
     }
 
     @keyframes fadeIn {
@@ -125,6 +274,62 @@
       to {
         opacity: 1;
         transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .goals-header {
+        grid-template-columns: 70px 1fr;
+        min-height: 160px;
+      }
+
+      .streamer-area {
+        grid-column: 1 / -1;
+        min-height: 120px;
+      }
+
+      .charystream-badge {
+        top: 8px;
+        left: auto;
+        right: 128px;
+        width: 150px;
+        height: 62px;
+        font-size: 1.35rem;
+      }
+
+      .streamer-photo {
+        top: -8px;
+        right: 16px;
+        width: 110px;
+      }
+
+      .goal-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+      }
+
+      .goal-icon svg {
+        width: 42px;
+        height: 42px;
+      }
+
+      .goals-list {
+        padding: 0 12px 0 44px;
+        gap: 18px;
+      }
+
+      .goal-row {
+        min-height: 48px;
+        padding: 10px 18px 10px 58px;
+        border-radius: 0 999px 999px 0;
+      }
+
+      .amount {
+        left: -34px;
+        min-width: 84px;
+        height: 42px;
+        font-size: 1.1rem;
       }
     }
 
@@ -141,13 +346,74 @@
         border-radius: 16px;
         padding: 14px 8px;
       }
+
+      .goals-board {
+        padding: 22px 6px 34px;
+      }
+
+      .goals-header {
+        grid-template-columns: 54px 1fr;
+        gap: 10px;
+        min-height: 150px;
+      }
+
+      .goal-title {
+        font-size: 1.9rem;
+      }
+
+      .goal-subtitle {
+        font-size: 1.35rem;
+      }
+
+      .goal-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+      }
+
+      .goal-icon svg {
+        width: 34px;
+        height: 34px;
+      }
+
+      .charystream-badge {
+        right: 96px;
+        width: 120px;
+        height: 52px;
+        font-size: 1.05rem;
+      }
+
+      .streamer-photo {
+        width: 82px;
+        right: 8px;
+      }
+
+      .goals-list {
+        padding-left: 34px;
+        padding-right: 4px;
+        gap: 14px;
+      }
+
+      .goal-row {
+        min-height: 44px;
+        padding: 10px 12px 10px 48px;
+        font-size: 0.9rem;
+      }
+
+      .amount {
+        left: -30px;
+        min-width: 70px;
+        height: 36px;
+        padding: 0 12px;
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
 
 <body>
   <main>
-    <header>
+    <header class="page-title">
       <h1>Greenpepper au Charystream</h1>
     </header>
 
@@ -162,17 +428,123 @@
     </nav>
 
     <section id="donation-goals" class="content active">
-      <div class="image-list">
-        <img src="goals/goal-1.webp" alt="Donation goals Greenpepper - partie 1">
-        <img src="goals/goal-2.webp" alt="Donation goals Greenpepper - partie 2">
-        <img src="goals/goal-3.webp" alt="Donation goals Greenpepper - partie 3">
+      <div class="goals-board">
+        <div class="goals-header">
+          <div class="goal-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64">
+              <path d="M18 34h9l8 8h9c5 0 8 3 8 7v1H28l-13-7H8v-9h10z"></path>
+              <path d="M35 24c-7-6-1-15 6-9 7-6 13 3 6 9l-6 6z"></path>
+            </svg>
+          </div>
+
+          <div class="goal-title-block">
+            <h2 class="goal-title">Donation goals</h2>
+            <div class="goal-subtitle">GreenPepperCH</div>
+            <div class="header-line"></div>
+          </div>
+
+          <div class="streamer-area">
+            <div class="charystream-badge">CharyStream<br>2026</div>
+            <img class="streamer-photo" src="assets/greenpepper.webp" alt="Greenpepper">
+          </div>
+        </div>
+
+        <ul class="goals-list">
+          <li class="goal-row orange">
+            <span class="amount">25€</span>
+            <span>On arrête tout et on fait cinq minutes de câlins à Maurice</span>
+          </li>
+
+          <li class="goal-row pink">
+            <span class="amount">50€</span>
+            <span>Reveal des cadeaux à gagner à la fin de l'event</span>
+          </li>
+
+          <li class="goal-row orange">
+            <span class="amount">100€</span>
+            <span>Reveal de GreenPepper quand il n'était pas encore vieux</span>
+          </li>
+
+          <li class="goal-row pink">
+            <span class="amount">150€</span>
+            <span>Surprise !</span>
+          </li>
+
+          <li class="goal-row orange">
+            <span class="amount">200€</span>
+            <span>Le Père Green reviendra un jour en live pour votre plus grand bonheur</span>
+          </li>
+
+          <li class="goal-row pink">
+            <span class="amount">250€</span>
+            <span>Je perds 14 ans en seulement 5 minutes en me rasant la barbe</span>
+          </li>
+
+          <li class="goal-row orange">
+            <span class="amount">300€</span>
+            <span>On trie et on classe ensemble tous les clips de la chaîne</span>
+          </li>
+
+          <li class="goal-row pink">
+            <span class="amount">400€</span>
+            <span>J'organise un Archipelago géant avec plus de 50 personnes</span>
+          </li>
+
+          <li class="goal-row orange">
+            <span class="amount">500€</span>
+            <span>Mario Golf 64 avec BlueGuy</span>
+          </li>
+
+          <li class="goal-row pink">
+            <span class="amount">600€</span>
+            <span>Seed de OOT rando en Crowd Control</span>
+          </li>
+
+          <li class="goal-row orange">
+            <span class="amount">700€</span>
+            <span>Le vrai débat</span>
+          </li>
+
+          <li class="goal-row pink">
+            <span class="amount">850€</span>
+            <span>"Poivre vert" avec Hotage Etchebest</span>
+          </li>
+
+          <li class="goal-row orange">
+            <span class="amount">1000€</span>
+            <span>Je vous emmène en rando dans les montagnes suisses</span>
+          </li>
+
+          <li class="goal-row pink">
+            <span class="amount">1250€</span>
+            <span>Je joue pour la première fois de ma vie</span>
+          </li>
+
+          <li class="goal-row orange">
+            <span class="amount">1666€</span>
+            <span>Je vais jusqu'à Nancy pour que Papy me paie un BK (+de 4h de route)</span>
+          </li>
+
+          <li class="goal-row pink">
+            <span class="amount">2026€</span>
+            <span>Je fais une seed de rando OOT All Sanity jusqu'au bout. (Non découplé)</span>
+          </li>
+
+          <li class="goal-row orange">
+            <span class="amount">3333€</span>
+            <span>Je suis un tuto Bob Ross</span>
+          </li>
+
+          <li class="goal-row pink">
+            <span class="amount">6666€</span>
+            <span>Je ne rage plus jamais en jouant à League of Legends. Sinon je désinstalle le jeu à vie !</span>
+          </li>
+        </ul>
       </div>
     </section>
 
     <section id="planning" class="content">
-      <div class="image-list">
-        <img src="planning/planning.png" alt="Planning Greenpepper au Charystream">
-      </div>
+      <img class="planning-image" src="planning/planning.png" alt="Planning Greenpepper au Charystream">
     </section>
   </main>
 
