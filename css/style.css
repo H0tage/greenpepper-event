@@ -588,7 +588,7 @@ main {
 }
 
 .person-chip::before {
-  content: "\\25CF";
+  content: "●";
   margin-right: 7px;
   color: #18704a;
   font-size: 0.65rem;
