@@ -533,6 +533,14 @@ main {
   background: #111111;
 }
 
+.schedule-item.is-past .schedule-content {
+  opacity: 0.68;
+}
+
+.schedule-item.is-past .schedule-time {
+  opacity: 0.78;
+}
+
 .schedule-item.is-live .schedule-time::after {
   border-color: #18704a;
   background: #36e66f;
