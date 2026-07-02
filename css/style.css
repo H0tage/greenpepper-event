@@ -436,6 +436,65 @@ main {
    Schedule
    ================================ */
 
+/* ================================
+   Planning — en direct maintenant
+   ================================ */
+
+.now-live-card {
+  margin: 0 auto 26px;
+  padding: 20px 24px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: 0 10px 24px var(--soft-shadow);
+}
+
+.now-live-card.is-rest {
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.now-live-card.is-live {
+  background: var(--gradient-card);
+}
+
+.now-live-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 10px;
+  color: var(--brown);
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.now-live-dot {
+  width: 14px;
+  height: 14px;
+  border: 3px solid var(--brown);
+  border-radius: 50%;
+  background: var(--page-bg);
+}
+
+.now-live-card.is-live .now-live-dot {
+  border-color: #18704a;
+  background: #36e66f;
+  animation: livePulse 2.2s ease-in-out infinite;
+}
+
+.now-live-card h3 {
+  margin: 0 0 6px;
+  color: var(--brown);
+  font-size: clamp(1.35rem, 3vw, 2rem);
+}
+
+.now-live-card p {
+  margin: 0;
+  color: rgba(63, 22, 10, 0.9);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
 .schedule-timeline {
   position: relative;
   display: flex;
@@ -902,6 +961,12 @@ main {
     border-radius: 20px;
   }
 
+.now-live-card {
+  margin-bottom: 22px;
+  padding: 18px 16px;
+  border-radius: 20px;
+}
+   
   .puzzle-board,
   .charystream-board {
     padding: 24px 12px 30px;
