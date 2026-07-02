@@ -5,6 +5,7 @@ const scheduleItems = document.querySelectorAll(".schedule-item[data-start][data
 const nowLiveCard = document.getElementById("now-live");
 const nowLiveTitle = document.getElementById("now-live-title");
 const nowLiveTime = document.getElementById("now-live-time");
+const nowLiveLink = document.getElementById("now-live-link");
 
 function activateTab(target) {
   const selectedTab = document.querySelector('.tab[data-target="' + target + '"]');
@@ -39,6 +40,11 @@ function updateNowLiveCard(liveItem) {
 
     nowLiveTitle.textContent = "Actuellement hors ligne / au repos";
     nowLiveTime.textContent = "Aucune activité en cours";
+
+    if (nowLiveLink) {
+      nowLiveLink.textContent = "Voir la chaîne Twitch";
+    }
+
     return;
   }
 
@@ -50,6 +56,10 @@ function updateNowLiveCard(liveItem) {
 
   nowLiveTitle.textContent = title;
   nowLiveTime.textContent = time;
+
+  if (nowLiveLink) {
+    nowLiveLink.textContent = "Voir le live";
+  }
 }
 
 function updateScheduleStatus() {
